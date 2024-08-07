@@ -38,11 +38,8 @@ const conditionalImports = (options: PluginOptions = {}): Plugin => {
   return {
     name: "rollup-plugin-conditional-import",
     transform(code, id) {
-      if (!filter(id)) return "";
-
-      if (!processEnvRegex.test(code)) {
-        return { code, map: null };
-      }
+      if (!filter(id)) return;
+      if (!processEnvRegex.test(code)) return { code, map: null };
 
       return {
         code: code
