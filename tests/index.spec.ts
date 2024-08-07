@@ -39,8 +39,12 @@ describe("conditionalImports plugin", () => {
     const result = output[0].code;
 
     expect(result).toContain('console.log("I\'m a invalid extension file");\n');
-    expect(result).toContain('module.exports = require("./dev-prod-deps/prod-module");\n');
-    expect(result).toContain('module.exports = require("./dev-prod-deps/dev-module");\n');
+    expect(result).toContain(
+      'module.exports = require("./dev-prod-deps/prod-module");\n',
+    );
+    expect(result).toContain(
+      'module.exports = require("./dev-prod-deps/dev-module");\n',
+    );
   });
 
   it("should call the next plugin", async () => {
