@@ -20,5 +20,5 @@
     "declarationDir": "./dist/@types"
   },
   "include": ["**/*.ts"],
-  "exclude": ["scripts", "dist", "node_modules", "**/*.spec.ts"]
+  "exclude": ["scripts", "dist", "node_modules", "**/*.spec.ts", "tests/mocks/*"]
 }

@@ -1,4 +1,5 @@
 import { $ } from "bun";
+import esbuild, { type BuildOptions } from "esbuild";
 import {
   dependencies,
   devDependencies,
@@ -7,20 +8,35 @@ import {
 
 await $`rm -rf ./dist`.nothrow().quiet();
 
-const result = await Bun.build({
-  target: "node",
-  entrypoints: ["./src/index.ts"],
-  outdir: "./dist",
-  minify: true,
+const baseOpts: BuildOptions = {
+  entryPoints: ["./src/index.ts"],
+  platform: "node",
+  bundle: true,
+  outdir: "dist",
   external: [
     ...Object.keys(dependencies),
     ...Object.keys(devDependencies),
     ...Object.keys(peerDependencies),
   ],
-});
+  // minify: true,
+};
 
-if (result.success) {
-  console.log("Build success");
-} else {
-  console.error("Build failed");
-}
+esbuild
+  .build({
+    ...baseOpts,
+    format: "cjs",
+    outExtension: { ".js": ".cjs" },
+  })
+  .then(() => {
+    console.log("CJS Build success");
+  });
+
+esbuild
+  .build({
+    ...baseOpts,
+    format: "esm",
+    outExtension: { ".js": ".mjs" },
+  })
+  .then(() => {
+    console.log("ESM Build success");
+  });
