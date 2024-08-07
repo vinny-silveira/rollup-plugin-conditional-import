@@ -1,0 +1,56 @@
+{
+  "name": "rollup-plugin-conditional-import",
+  "version": "0.1.0",
+  "description": "A Rollup plugin that allows you to conditionally import modules (CJS) based on environment variable",
+  "keywords": [
+    "rollup-plugin",
+    "conditional",
+    "import"
+  ],
+  "homepage": "https://github.com/vinny-silveira/rollup-plugin-conditional-import",
+  "bugs": {
+    "url": "https://github.com/vinny-silveira/rollup-plugin-conditional-import/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vinny-silveira/rollup-plugin-conditional-import.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Vinicius Silveira",
+    "email": "vinnysilveira09@gmail.com",
+    "url": "https://github.com/vinny-silveira"
+  },
+  "type": "module",
+  "types": "./dist/@types/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "bun ./scripts/build.ts",
+    "postbuild": "tsc --emitDeclarationOnly",
+    "lint": "biome check",
+    "lint:fix": "biome check --write --unsafe",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^5.1.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@types/bun": "^1.1.6",
+    "rollup": "^4.0.0-24",
+    "typescript": "^5.5.4"
+  },
+  "peerDependencies": {
+    "rollup": "^3.0.0||^4.0.0"
+  },
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}
