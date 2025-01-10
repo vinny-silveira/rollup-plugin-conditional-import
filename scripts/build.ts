@@ -18,7 +18,7 @@ const baseOpts: BuildOptions = {
     ...Object.keys(devDependencies),
     ...Object.keys(peerDependencies),
   ],
-  // minify: true,
+  minify: true,
 };
 
 esbuild
